@@ -1,0 +1,313 @@
+<?xml version="1.0"?>
+<robot name="irb_1410_robot_ef" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <material name="red"><color rgba="1 0 0 1"/></material>
+    <material name="green"><color rgba="0 1 0 1"/></material>
+    <material name="blue"><color rgba="0 0 1 1"/></material>
+    <material name="black"><color rgba="0 0 0 1"/></material>
+    <material name="yellow"><color rgba="1 1 0 1"/></material>
+
+    <xacro:include filename="pick_drop_setup.xacro" />
+    
+    <!--  ###############  BASE LINK  ###############   -->
+    <link name="base_link" />
+    
+    <!--    ROBOT BASE LINK   -->
+    <link name="robot_base" >
+        <visual>    
+            <geometry>
+                <box size="0.82 0.86 0.235"/>
+            </geometry>
+            <origin xyz="0 0 -0.1175" rpy="0 0 0" />
+            <material name="red"/>
+        </visual>
+        
+        <collision>
+             <visual>    
+            <geometry>
+                <box size="0.82 0.86 0.235"/>
+            </geometry>
+            <origin xyz="0 0 -0.1175" rpy="0 0 0" />
+            <material name="red"/>
+        </visual>
+        </collision>
+
+    </link>
+
+    <!--   ############### ROBOT BASE ROATE LINK  ###############   -->
+    <link name="base" >
+        <visual>    
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/Base.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0.15 0 1" rpy="0 0 1.57" />
+            <material name="green"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/Base.stl" 
+                      scale="0.001 0.001 0.01"/>
+            </geometry>
+            <origin xyz="0.15 0 1" rpy="0 0 1.57" />
+        </collision>
+    </link>
+
+     <!--   ############### ROBOT ARM LINK ###############  -->
+    <link name="arm_1" >
+        <visual>    
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/Arm_1.stl" 
+                      scale="0.00085 0.0007 0.001"/>
+            </geometry>
+            <origin xyz="0 0 0.65" rpy="0 0 1.57" />
+            <material name="blue"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/Arm_1.stl" 
+                      scale="0.00085 0.0007 0.001"/>
+            </geometry>
+            <origin xyz="0 0 0.65" rpy="0 0 1.57" />
+        </collision>
+    </link>
+
+    <!--   ############### ROBOT ARM 2 LINK ###############  -->
+    <link name="arm_2" >
+        <visual>    
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/Arm_2.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0 0 0.11" rpy="0 0 1.57" />
+            <material name="yellow"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/Arm_2.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0 0 0.11" rpy="0 0 1.57" />
+        </collision>
+    </link>
+
+    <!--   ############### ROBOT WRIST LINK ###############  -->
+    <link name="wrist" >
+        <visual>    
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/Wrist.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0 0.004 -0.01" rpy="0 0 1.57" />
+            <material name="black"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/Wrist.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0 0.004 -0.01" rpy="0 0 1.57" />
+        </collision>
+    </link>
+
+    <!--   ############### ROBOT END WRIST LINK  ############### -->
+    <link name="end_wrist" >
+        <visual>    
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/End_wrist.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="-0.713 0 0" rpy="0 0 1.57" />
+            <material name="yellow"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/End_wrist.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="-0.713 0 0" rpy="0 0 1.57" />
+        </collision>
+    </link>
+
+    <!--   ############### ROBOT END LINK ###############  -->
+    <link name="end" >
+        <visual>    
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/END.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="-0.798 0 0" rpy="0 0 1.57" />
+            <material name="green"/>
+        </visual>
+
+        <collision>
+             <geometry>
+                <mesh filename="package://irb_1410_new/meshes/END.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="-0.798 0 0" rpy="0 0 1.57" />
+        </collision>
+    </link>
+
+    <!--   ############### ROBOT END EFFECTOR CYLINDER LINK ###############  -->
+    <link name="end_cylinder" >
+        <visual>    
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/ef_cylinder.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0.815 0 0" rpy="1.57 1.57 0" />
+            <material name="yellow"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/ef_cylinder.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0.815 0 0" rpy="1.57 1.57 0" />
+        </collision>
+    </link>
+
+    <!--   ############### ROBOT END EFFECTOR FINGER_R LINK ###############  -->
+    <link name="end_finger_r" >
+        <visual>    
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/ef_finger.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="-0.043 0 -0.885" rpy="-1.57 0 3.14" />
+            <material name="red"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/ef_finger.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="-0.043 0 -0.885" rpy="-1.57 0 3.14" />
+        </collision>
+    </link>
+
+    <!--  ###############  GRIPPER BASE LINK  ###############   -->
+    <link name="gripper_link" />
+
+    <!--   ############### ROBOT END EFFECTOR FINGER_L LINK ###############  -->
+    <link name="end_finger_l" >
+        <visual>    
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/ef_finger.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0.043 0 -0.885" rpy="-1.57 0 0" />
+            <material name="red"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://irb_1410_new/meshes/ef_finger.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0.043 0 -0.885" rpy="-1.57 0 0" />
+        </collision>
+    </link>  
+
+
+    <!--  ##############################  JOINTS  ##############################  -->
+    <joint name="base_link_robot_base" type="fixed">
+        <parent link="base_link"/>
+        <child link="robot_base"/>
+        <origin xyz="0 0 0.235" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="joint1" type="revolute">
+        <parent link="robot_base"/>
+        <child link="base"/>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-2.96706" upper="2.96706" effort="10" velocity="1"/>
+    </joint> 
+
+    <joint name="joint2" type="revolute">
+        <parent link="base"/>
+        <child link="arm_1"/>
+        <origin xyz="0.15 0.0 0.475" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="-1.22173" upper="1.22173" effort="10" velocity="1"/>
+    </joint>  
+
+    <joint name="joint3" type="revolute">
+        <parent link="arm_1"/>
+        <child link="arm_2"/>
+        <origin xyz="0 0 0.600" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="-1.13446" upper="1.22173" effort="10" velocity="1"/>
+    </joint>
+
+    <joint name="joint4" type="revolute">
+        <parent link="arm_2"/>
+        <child link="wrist"/>
+        <origin xyz="0 0 0.12" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="-2.53073" upper="2.53073" effort="5" velocity="0.5"/>
+    </joint>
+
+    <joint name="joint5" type="revolute">
+        <parent link="wrist"/>
+        <child link="end_wrist"/>
+        <origin xyz="0.72 0 -0.01" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="-2.00713" upper="2.00713" effort="5" velocity="0.5"/>
+    </joint>
+
+    <joint name="joint6" type="revolute">
+        <parent link="end_wrist"/>
+        <child link="end"/>
+        <origin xyz="0.085 0.0 0.0" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="-5.23599" upper="5.23599" effort="5" velocity="0.5"/>
+    </joint>
+
+    <!--  ###############  END EFFECTOR CYLINDER LINK ###############  -->
+
+    <joint name="ef_cylinder" type="fixed">
+        <parent link="end"/>
+        <child link="end_cylinder"/>
+        <origin xyz="0.07 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <!--  ###############  END EFFECTOR GRIPPER LINK ###############  -->
+
+    <joint name="tool" type="fixed">
+        <parent link="end_cylinder"/>
+        <child link="gripper_link"/>
+        <origin xyz="0.0 0 0" rpy="1.57 0 1.57"/>
+    </joint>
+
+    <!--  ###############  END EFFECTOR RIGHT FINGER LINK ###############  -->
+
+    <joint name="ef_finger_r" type="prismatic">
+        <parent link="end_cylinder"/>
+        <child link="end_finger_r"/>
+        <origin xyz="0.00 0.02 0" rpy="1.57 0 1.57"/>
+        <axis xyz="1 0 0"/>
+        <!-- Limits: lower/upper (meters), effort (N), velocity (m/s) -->
+        <limit effort="100.0" lower="0.0" upper="0.02" velocity="0.02"/>
+    </joint>
+
+    <!--  ###############  END EFFECTOR RIGHT FINGER LINK ###############  -->
+    <joint name="ef_finger_l" type="prismatic">
+        <parent link="end_cylinder"/>
+        <child link="end_finger_l"/>
+        <origin xyz="0.0 -0.02 0" rpy="1.57 0 1.57"/>
+        <axis xyz="-1 0 0"/>
+        <!-- Limits: lower/upper (meters), effort (N), velocity (m/s) -->
+        <limit effort="100.0" lower="0.0" upper="0.02" velocity="0.02"/>
+    </joint>
+
+</robot>

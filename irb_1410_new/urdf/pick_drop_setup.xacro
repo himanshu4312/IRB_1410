@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!--  ###############  ROBOT PICKUP STAND LINK ###############   -->
+    <link name="pickup_stand">
+        <visual>
+            <geometry>
+                <box size="0.51 0.274 0.5635" />
+            </geometry>
+            <origin xyz="0.137 0.25 -0.28175" rpy="0 0 1.57" />    
+        </visual>
+
+        <collision>
+           <geometry>
+                <box size="0.51 0.274 0.5635" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 1.57" />
+        </collision>
+    </link> 
+  
+    <!--  ###############  ROBOT PICKUP STAND LINK ###############  -->
+    <link name="drop_stand" >
+        <visual>    
+            <geometry>
+                <mesh filename="package://irb_1410/meshes/Part1.SLDPRT" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0.9 -0.32 0.35" rpy="0 1.57 1.57" />
+            <material name="green"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <mesh filename="package://irb_1410/meshes/stand_1.stl" 
+                      scale="0.001 0.001 0.001"/>
+            </geometry>
+            <origin xyz="0.9 -0.32 0.35" rpy="0 1.57 1.57" />
+        </collision>
+    </link>
+
+
+    <!-- ###############   CYLINDRICAL BLOCK  MACROS  ############### -->
+    <xacro:macro name="cylindrical_block" params="prefix">
+        <link name="cylindrical_block_${prefix}" >
+        <visual>    
+            <geometry>
+                <cylinder radius="0.0325" length="0.0975"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="blue"/>
+        </visual>
+        
+        <collision>    
+            <geometry>
+                <cylinder radius="0.0325" length="0.0975"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
+
+    </link>
+    </xacro:macro>
+
+
+    <!-- ###############   CALLING FRONT CYLINDRICAL BLOCK  MACROS  ############### -->
+    <xacro:cylindrical_block prefix="11" />
+    <xacro:cylindrical_block prefix="12" />
+    <xacro:cylindrical_block prefix="13" />
+    <xacro:cylindrical_block prefix="14" />
+
+    <xacro:cylindrical_block prefix="21" />
+    <xacro:cylindrical_block prefix="22" />
+    <xacro:cylindrical_block prefix="23" />
+    <xacro:cylindrical_block prefix="24" />
+
+
+    <!--  ###############  STAND JOINT ###############  -->
+    <joint name="pickup_stand_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="pickup_stand"/>
+        <origin xyz="1.2 -0.255 0.5635" rpy="0 0 0"/>
+    </joint>
+
+    <!--  ###############  DROP STAND JOINT ###############  -->
+    <joint name="drop_stand_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="drop_stand"/>
+        <origin xyz="0 -1.2 0" rpy="0 0 0"/>
+    </joint>
+
+    <!--  ###############  FRONT CYLINDRICAL BLOCK JOINT 11 ###############  -->
+    <joint name="cylindrial_block_joint_11" type="fixed">
+        <parent link="pickup_stand"/>
+        <child link="cylindrical_block_11"/>
+        <origin xyz="0.07624 0.07665 0.049" rpy="0 0 0"/>
+    </joint>
+
+    <!--  ###############  FRONT CYLINDRICAL BLOCK JOINT 12 ###############  -->
+    <joint name="cylindrial_block_joint_12" type="fixed">
+        <parent link="pickup_stand"/>
+        <child link="cylindrical_block_12"/>
+        <origin xyz="0.07624 0.19165 0.049" rpy="0 0 0"/>
+    </joint>
+
+    <!--  ###############  FRONT CYLINDRICAL BLOCK JOINT 13 ###############  -->
+    <joint name="cylindrial_block_joint_13" type="fixed">
+        <parent link="pickup_stand"/>
+        <child link="cylindrical_block_13"/>
+        <origin xyz="0.07624 0.30665 0.049" rpy="0 0 0"/>
+    </joint>
+
+    <!--  ###############  FRONT CYLINDRICAL BLOCK JOINT 14 ###############  -->
+    <joint name="cylindrial_block_joint_14" type="fixed">
+        <parent link="pickup_stand"/>
+        <child link="cylindrical_block_14"/>
+        <origin xyz="0.07624 0.42165 0.049" rpy="0 0 0"/>
+    </joint>
+
+    <!--  ###############  FRONT CYLINDRICAL BLOCK JOINT 21 ###############  -->
+    <joint name="cylindrial_block_joint_21" type="fixed">
+        <parent link="pickup_stand"/>
+        <child link="cylindrical_block_21"/>
+        <origin xyz="0.21536 0.07665 0.049" rpy="0 0 0"/>
+    </joint>
+
+    <!--  ###############  FRONT CYLINDRICAL BLOCK JOINT 22 ###############  -->
+    <joint name="cylindrial_block_joint_22" type="fixed">
+        <parent link="pickup_stand"/>
+        <child link="cylindrical_block_22"/>
+        <origin xyz="0.21536 0.19165 0.049" rpy="0 0 0"/>
+    </joint>
+
+    <!--  ###############  FRONT CYLINDRICAL BLOCK JOINT 23 ###############  -->
+    <joint name="cylindrial_block_joint_23" type="fixed">
+        <parent link="pickup_stand"/>
+        <child link="cylindrical_block_23"/>
+        <origin xyz="0.21536 0.30665 0.049" rpy="0 0 0"/>
+    </joint>
+
+    <!--  ###############  FRONT CYLINDRICAL BLOCK JOINT 24 ###############  -->
+    <joint name="cylindrial_block_joint_24" type="fixed">
+        <parent link="pickup_stand"/>
+        <child link="cylindrical_block_24"/>
+        <origin xyz="0.21536 0.42165 0.049" rpy="0 0 0"/>
+    </joint>
+
+</robot>
+    
+    

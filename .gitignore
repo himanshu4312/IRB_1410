@@ -1,0 +1,12 @@
+/*
+!/.gitignore
+!/irb1410_bridge/
+!/irb_1410_new/
+
+__pycache__/
+*.pyc
+build/
+install/
+log/
+.vscode/
+ipch/
